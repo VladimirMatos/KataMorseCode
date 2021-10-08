@@ -1,31 +1,31 @@
 const { test, expect } = require("@jest/globals");
-const morseFunction = require('../Main')
+const morseFunction = require("../Main");
 
-test('Null input', ()=>{
-    expect(morseFunction(null)).toBe('ArgumentNullException');
+
+test('Test null input',()=>{
+   expect(morseFunction(null)).toBe('Null exception') 
 })
 
-test('empty input', ()=>{
-    expect(morseFunction(' ')).toBe('Empty input ');
-})
+test('Test empty input',()=>{
+    expect(morseFunction(' ')).toBe('Not accept empty input') 
+ })
+ 
+test('Test number input',()=>{
+    expect(morseFunction(564654)).toBe('Not accept number input') 
+ })
 
-test('int input', ()=>{
-    expect(morseFunction(4156465)).toBe('Int input not accepted');
-})
+ test('Test string with special characters',()=>{
+    expect(morseFunction('###')).toBe('Not accept special character') 
+ })
 
-test('special character', ()=>{
-    expect(morseFunction('###')).toBe('Invalid character');
-})
+ test('Test string normal test',()=>{
+    expect(morseFunction('SOS')).toBe('... $$ --- $$ ...') 
+ })
 
-test('String input', ()=>{
-    expect(morseFunction('sos')).toBe('... $$ --- $$ ...');
-})
+ test('Test string with initial special characters test',()=>{
+    expect(morseFunction('## SOS')).toBe('... $$ --- $$ ...') 
+ })
 
-test('String input with initial special character', ()=>{
-    expect(morseFunction('### sos')).toBe('... $$ --- $$ ...');
-})
-
-test('String input with ended special character', ()=>{
-    expect(morseFunction('sos ###')).toBe('... $$ --- $$ ...');
-})
-
+ test('Test string with ended special characters test',()=>{
+    expect(morseFunction('SOS$$')).toBe('... $$ --- $$ ...') 
+ })
